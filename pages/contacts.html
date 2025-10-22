@@ -1,0 +1,111 @@
+<!-- pages/contacts.html -->
+<html lang="ru" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Контакты - Портфолио</title>
+    <link rel="stylesheet" href="../style/style.css">
+</head>
+<body>
+    <div class="page">
+        <header class="header">
+            <h1 class="header__title">Контакты</h1>
+        </header>
+
+        <nav class="nav">
+            <ul class="nav__list">
+                <li class="nav__item">
+                    <a class="nav__link" href="../index.html">Главная</a>
+                </li>
+                <li class="nav__item">
+                    <a class="nav__link" href="news.html">Новости</a>
+                </li>
+                <li class="nav__item nav__item--active">
+                    <a class="nav__link" href="contacts.html">Контакты</a>
+                </li>
+            </ul>
+        </nav>
+
+        <main class="main">
+            <section class="contacts">
+                <h2 class="contacts__title">Свяжитесь со мной</h2>
+                
+                <div class="contacts__info">
+                    <h3>Электронная почта</h3>
+                    <p>karpenko.a.r@edu.mirea.ru</p>
+                </div>
+
+                <div class="contacts__info">
+                    <h3>Физический адрес</h3>
+                    <p>г. Москва, Проспект Вернадского, 78</p>
+                </div>
+
+                <div class="contacts__grid">
+                    <div class="contacts__item">
+                        <h3>Телефон</h3>
+                        <p>+7 (495) 123-45-67</p>
+                    </div>
+                    <div class="contacts__item">
+                        <h3>Время работы</h3>
+                        <p>Пн-Пт: 9:00-18:00</p>
+                    </div>
+                    <div class="contacts__item">
+                        <h3>Социальные сети</h3>
+                        <p>VK, Telegram, WhatsApp</p>
+                    </div>
+                </div>
+
+                <button class="contacts__button" onclick="openModal()">Связаться с нами</button>
+            </section>
+        </main>
+
+        <footer class="footer">
+            <p class="footer__text">&copy; 2024 Контактная информация</p>
+        </footer>
+    </div>
+
+    <!-- Модальное окно -->
+    <div id="contactModal" class="modal">
+        <div class="modal__content">
+            <div class="modal__header">
+                <h2>Форма обратной связи</h2>
+            </div>
+            <form id="feedbackForm">
+                <div class="form__group">
+                    <label class="form__label" for="name">Имя *</label>
+                    <input class="form__input" type="text" id="name" name="name" required>
+                </div>
+                <div class="form__group">
+                    <label class="form__label" for="phone">Телефон *</label>
+                    <input class="form__input" type="tel" id="phone" name="phone" required>
+                </div>
+                <div class="form__group">
+                    <label class="form__label" for="email">Email *</label>
+                    <input class="form__input" type="email" id="email" name="email" required>
+                </div>
+                <div class="form__group">
+                    <label class="form__label" for="category">Категория *</label>
+                    <select class="form__select" id="category" name="category" required>
+                        <option value="">Выберите категорию</option>
+                        <option value="technical">Техническая поддержка</option>
+                        <option value="commercial">Коммерческое предложение</option>
+                        <option value="cooperation">Сотрудничество</option>
+                    </select>
+                </div>
+                <div class="form__group">
+                    <label class="form__label" for="message">Сообщение *</label>
+                    <textarea class="form__textarea" id="message" name="message" required></textarea>
+                </div>
+                <div class="form__actions">
+                    <button type="button" class="button button--secondary" onclick="closeModal()">Отмена</button>
+                    <button type="submit" class="button button--primary">Отправить</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+<script src="../js/theme.js"></script>
+<script src="../js/navigation.js"></script>
+<script src="../js/modal.js"></script>
+</body>
+</html>
