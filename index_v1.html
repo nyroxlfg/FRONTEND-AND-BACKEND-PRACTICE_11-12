@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Главная - Портфолио</title>
+  <link rel="stylesheet" href="style/style.css">
+</head>
+<body>
+  <div class="page">
+    <header class="header">
+      <h1 class="header__title">Моё портфолио</h1>
+      <button class="theme-toggle" id="themeToggle" aria-label="Переключить тему">
+        <span class="theme-toggle__icon">🌙</span>
+        <span class="theme-toggle__text">Темная тема</span>
+      </button>
+    </header>
+    
+    <nav class="nav">
+      <ul class="nav__list">
+        <li class="nav__item nav__item--active">
+          <a class="nav__link" href="index.html">Главная</a>
+        </li>
+        <li class="nav__item">
+          <a class="nav__link" href="pages/news.html">Новости</a>
+        </li>
+        <li class="nav__item">
+          <a class="nav__link" href="pages/contacts.html">Контакты</a>
+        </li>
+      </ul>
+    </nav>
+    
+    <main class="main">
+      <section class="profile">
+        <h1 class="profile__title">Информация об авторе</h1>
+        <div class="profile__card">
+          <img class="profile__photo" src="images/avatar.png" alt="Фото автора">
+          <div class="profile__info">
+            <h2 class="profile__name">Карпенко Артемий</h2>
+            <p class="profile__group">ЭФБО-13-24</p>
+          </div>
+        </div>
+      </section>
+      
+      <section class="about">
+        <h2 class="about__title">Обо мне</h2>
+        <div class="about__content">
+          <p class="about__text">
+            Студент, увлекаюсь веб-разработкой. Изучаю HTML, CSS и JavaScript.
+            Люблю создавать красивые и функциональные сайты.
+          </p>
+        </div>
+      </section>
+      
+      <section class="skills">
+        <h2 class="skills__title">Мои навыки</h2>
+        <div class="skills__list">
+          <div class="skill skill--html">
+            <span class="skill__name">HTML</span>
+          </div>
+          <div class="skill skill--css">
+            <span class="skill__name">CSS</span>
+          </div>
+          <div class="skill skill--js">
+            <span class="skill__name">JavaScript</span>
+          </div>
+        </div>
+      </section>
+      
+      <section class="projects">
+        <h2 class="projects__title">Проекты</h2>
+        <div class="projects__grid">
+          <article class="project-card">
+            <h3 class="project-card__title">Личный сайт</h3>
+            <p class="project-card__desc">Сайт-портфолио на HTML и CSS</p>
+          </article>
+          <article class="project-card">
+            <h3 class="project-card__title">Todo приложение</h3>
+            <p class="project-card__desc">Простое приложение для задач</p>
+          </article>
+        </div>
+      </section>
+    </main>
+    
+    <footer class="footer">
+      <p class="footer__text">&copy; 2024 Мой сайт</p>
+    </footer>
+  </div>
+
+  <script>
+    // Переключение темы
+    const themeToggle = document.getElementById('themeToggle');
+    const themeIcon = themeToggle.querySelector('.theme-toggle__icon');
+    const themeText = themeToggle.querySelector('.theme-toggle__text');
+    
+    // Проверяем сохраненную тему
+    const savedTheme = localStorage.getItem('theme') || 'light';
+    if (savedTheme === 'dark') {
+      document.documentElement.setAttribute('data-theme', 'dark');
+      themeIcon.textContent = '☀️';
+      themeText.textContent = 'Светлая тема';
+    }
+    
+    themeToggle.addEventListener('click', () => {
+      const currentTheme = document.documentElement.getAttribute('data-theme');
+      
+      if (currentTheme === 'dark') {
+        document.documentElement.removeAttribute('data-theme');
+        localStorage.setItem('theme', 'light');
+        themeIcon.textContent = '🌙';
+        themeText.textContent = 'Темная тема';
+      } else {
+        document.documentElement.setAttribute('data-theme', 'dark');
+        localStorage.setItem('theme', 'dark');
+        themeIcon.textContent = '☀️';
+        themeText.textContent = 'Светлая тема';
+      }
+    });
+
+    // Добавляем интерактивность карточкам проектов
+    document.querySelectorAll('.project-card').forEach(card => {
+      card.addEventListener('click', function() {
+        this.style.transform = 'translateY(-2px) scale(1.02)';
+        setTimeout(() => {
+          this.style.transform = '';
+        }, 150);
+      });
+    });
+  </script>
+</body>
+</html>
