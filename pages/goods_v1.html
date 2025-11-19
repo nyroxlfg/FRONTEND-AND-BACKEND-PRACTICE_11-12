@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Товары</title>
+<link rel="stylesheet" href="../style/style.css">
+</head>
+<body>
+<div class="page-container">
+    <header class="header">
+        <h1 class="header__title">Каталог товаров</h1>
+        <button class="theme-toggle" id="themeToggle" aria-label="Переключить тему">
+        <span class="theme-toggle__icon">🌙</span>
+        <span class="theme-toggle__text">Темная тема</span>
+        </button>
+    </header>
+<nav class="nav">
+<ul class="nav__list">
+<li class="nav__item nav__item--active"><a class="nav__link" href="../index.html">Главная</a></li>
+<li class="nav__item"><a class="nav__link" href="news.html">Новости</a></li>
+<li class="nav__item nav__item--active"><a class="nav__link" href="goods_v1.html">Товары</a></li>
+<li class="nav__item"><a class="nav__link" href="contacts.html">Контакты</a></li>
+</ul>
+</nav>
+<main class="content">
+<section class="goods-header">
+<h1 class="katalog">Каталог товаров</h1>
+<p class="katalog_text">Мы предлагаем широкий ассортимент качественных товаров по доступным ценам</p>
+</section>
+<section class="products">
+<article class="product-card">
+<img src="../images/ananas.png" alt="Товар 1" width="150" height="150">
+<h4 class="products__title">Ананас</h4>
+<p class="products__subtitle">вкусный ананас для кайфа души</p>
+<p class="products__grid">1000$</p>
+</article>
+<article class="product-card">
+<img src="../images/orange.png" alt="Товар 2" width="150" height="150">
+<h4 class="products__title">Апельсин</h4>
+<p class="products__subtitle">вкусный апельсин для кайфа души</p>
+<p class="products__grid">1500$</p>
+</article>
+<article class="product-card">
+<img src="../images/banana.png" alt="Товар 3" width="150" height="150">
+<h4 class="products__title">Банан</h4>
+<p class="products__subtitle">вкусный банан для кайфа души</p>
+<p class="products__grid">2000$</p>
+</article>
+</section>
+</main>
+<footer class="footer">
+<p class="footer__text">Футер</p>
+</footer>
+</div>
+<script>
+    // Переключение темы
+    const themeToggle = document.getElementById('themeToggle');
+    const themeIcon = themeToggle.querySelector('.theme-toggle__icon');
+    const themeText = themeToggle.querySelector('.theme-toggle__text');
+    
+    // Проверяем сохраненную тему
+    const savedTheme = localStorage.getItem('theme') || 'light';
+    if (savedTheme === 'dark') {
+    document.documentElement.setAttribute('data-theme', 'dark');
+    themeIcon.textContent = '☀️';
+    themeText.textContent = 'Светлая тема';
+    }
+    
+    themeToggle.addEventListener('click', () => {
+    const currentTheme = document.documentElement.getAttribute('data-theme');
+    
+    if (currentTheme === 'dark') {
+        document.documentElement.removeAttribute('data-theme');
+        localStorage.setItem('theme', 'light');
+        themeIcon.textContent = '🌙';
+        themeText.textContent = 'Темная тема';
+    } else {
+        document.documentElement.setAttribute('data-theme', 'dark');
+        localStorage.setItem('theme', 'dark');
+        themeIcon.textContent = '☀️';
+        themeText.textContent = 'Светлая тема';
+    }
+    });
+    // Добавляем интерактивность карточкам товаров
+    document.querySelectorAll('.product-card').forEach(card => {
+    card.addEventListener('click', function() {
+        this.style.transform = 'translateY(-2px) scale(1.02)';
+        setTimeout(() => {
+        this.style.transform = '';
+        }, 150);
+    });
+    });
+</script>
+</body>
+</html>
