@@ -28,7 +28,7 @@
 <h1 class="katalog">Каталог товаров</h1>
 <p class="katalog_text">Мы предлагаем широкий ассортимент качественных товаров по доступным ценам</p>
 </section>
-<section class="products">
+<section class="products-grid">
     <article class="product-card product-card--discount">
         <img src="../images/ananas.png" alt="Товар 1" width="150" height="150">
         <h4 class="product-card__title">Ананас</h4>
@@ -85,18 +85,9 @@
         themeText.textContent = 'Светлая тема';
     }
     });
+    
     // Добавляем интерактивность карточкам товаров
     document.querySelectorAll('.product-card').forEach(card => {
-    card.addEventListener('click', function() {
-        this.style.transform = 'translateY(-2px) scale(1.02)';
-        setTimeout(() => {
-        this.style.transform = '';
-        }, 150);
-    });
-    });
-
-    // Добавляем интерактивность карточкам товаров
-document.querySelectorAll('.product-card').forEach(card => {
     card.addEventListener('click', function() {
         // Анимация при клике
         this.style.transform = 'translateY(-2px) scale(1.02)';
@@ -104,12 +95,12 @@ document.querySelectorAll('.product-card').forEach(card => {
             this.style.transform = '';
         }, 150);
         
-        // Переключение состояния "выбранный"
+        // Переключение состояния "выбранный" (только для товаров без скидки)
         if (!this.classList.contains('product-card--discount')) {
             this.classList.toggle('product-card--selected');
         }
     });
-});
+    });
 </script>
 </body>
 </html>
