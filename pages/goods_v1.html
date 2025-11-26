@@ -29,24 +29,27 @@
 <p class="katalog_text">Мы предлагаем широкий ассортимент качественных товаров по доступным ценам</p>
 </section>
 <section class="products">
-<article class="product-card">
-<img src="../images/ananas.png" alt="Товар 1" width="150" height="150">
-<h4 class="products__title">Ананас</h4>
-<p class="products__subtitle">вкусный ананас для кайфа души</p>
-<p class="products__grid">1000$</p>
-</article>
-<article class="product-card">
-<img src="../images/orange.png" alt="Товар 2" width="150" height="150">
-<h4 class="products__title">Апельсин</h4>
-<p class="products__subtitle">вкусный апельсин для кайфа души</p>
-<p class="products__grid">1500$</p>
-</article>
-<article class="product-card">
-<img src="../images/banana.png" alt="Товар 3" width="150" height="150">
-<h4 class="products__title">Банан</h4>
-<p class="products__subtitle">вкусный банан для кайфа души</p>
-<p class="products__grid">2000$</p>
-</article>
+    <article class="product-card product-card--discount">
+        <img src="../images/ananas.png" alt="Товар 1" width="150" height="150">
+        <h4 class="product-card__title">Ананас</h4>
+        <p class="product-card__desc">вкусный ананас для кайфа души</p>
+        <p class="product-card__price">
+            <span class="product-card__price--old">1200$</span>
+            1000$
+        </p>
+    </article>
+    <article class="product-card product-card--selected">
+        <img src="../images/orange.png" alt="Товар 2" width="150" height="150">
+        <h4 class="product-card__title">Апельсин</h4>
+        <p class="product-card__desc">вкусный апельсин для кайфа души</p>
+        <p class="product-card__price">1500$</p>
+    </article>
+    <article class="product-card">
+        <img src="../images/banana.png" alt="Товар 3" width="150" height="150">
+        <h4 class="product-card__title">Банан</h4>
+        <p class="product-card__desc">вкусный банан для кайфа души</p>
+        <p class="product-card__price">2000$</p>
+    </article>
 </section>
 </main>
 <footer class="footer">
@@ -91,6 +94,22 @@
         }, 150);
     });
     });
+
+    // Добавляем интерактивность карточкам товаров
+document.querySelectorAll('.product-card').forEach(card => {
+    card.addEventListener('click', function() {
+        // Анимация при клике
+        this.style.transform = 'translateY(-2px) scale(1.02)';
+        setTimeout(() => {
+            this.style.transform = '';
+        }, 150);
+        
+        // Переключение состояния "выбранный"
+        if (!this.classList.contains('product-card--discount')) {
+            this.classList.toggle('product-card--selected');
+        }
+    });
+});
 </script>
 </body>
 </html>
